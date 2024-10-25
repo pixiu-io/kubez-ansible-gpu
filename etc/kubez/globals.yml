@@ -495,3 +495,18 @@ s3:
 #zookeeper_persistence_size: "8Gi"
 #zookeeper_persistence_storageclass: "{{ nfs_storage_class }}"
 #zookeeper_context_fsgroup: "0"
+
+################
+# Nvidia Options
+################
+#enable_nvidia_operator: "no"
+#nvidia_operator_namespace: "nvidia-operator"
+#nvidia_operator_repository_name: "{{ default_repo_name }}"
+#nvidia_operator_repository_url: "{{ default_repo_url }}"
+#nvidia_operator_repository_path: "{{ default_repo_name }}/gpu-operator"
+#nvidia_operator_version: "v24.6.2"
+
+#########################
+# nvidia_device_plugin Options
+#########################
+#enable_nvidia_device_plugin: "no"

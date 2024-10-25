@@ -19,6 +19,8 @@ containerd-node
 [storage]
 localhost       ansible_connection=local
 
+[gpu]
+
 [baremetal:children]
 kube-master
 kube-node

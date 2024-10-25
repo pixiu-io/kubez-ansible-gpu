@@ -154,6 +154,8 @@ kube_applications:
     enabled: "{{ enable_pixiu_localstorage | bool }}"
   - name: tekton
     enabled: "{{ enable_tekton | bool }}"
+  - name: nvidia-device-plugin
+    enabled: "{{ enable_nvidia_device_plugin | bool }}"
 
 #####################
 # Application Images
@@ -576,6 +578,21 @@ enable_cilium: "no"
 cilium_chart_version: 1.14.5
 cilium_namespace: kube-system
 
+################
+# Nvidia Options
+################
+enable_nvidia_operator: "no"
+nvidia_operator_namespace: "nvidia-operator"
+nvidia_operator_repository_name: "{{ default_repo_name }}"
+nvidia_operator_repository_url: "{{ default_repo_url }}"
+nvidia_operator_repository_path: "pixiuio/gpu-operator"
+nvidia_operator_version: "v24.6.2"
+
+#########################
+# nvidia_device_plugin Options
+#########################
+enable_nvidia_device_plugin: "no"
+
 ##########################
 # Helm Chart Applications
 ##########################
@@ -626,6 +643,8 @@ enable_charts:
     enabled: "{{ enable_loggie | bool }}"
   - name: zookeeper
     enabled: "{{ enable_zookeeper | bool }}"
+  - name: nvidia-operator
+    enabled: "{{ enable_nvidia_operator | bool }}"
 
 charts:
   prometheus:
@@ -1013,5 +1032,6 @@ charts:
     chart:
       path: "{{ nvidia_operator_repository_path }}"
       version: "{{ nvidia_operator_version }}"
+    chart_extra_vars: {}
     chart_extra_flags:
       - create-namespace

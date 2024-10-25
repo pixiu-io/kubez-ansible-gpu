@@ -57,6 +57,14 @@
           ansible_distribution == 'Debian'
         - release_bump
 
+    - name: Add container-toolkit gpg
+      gpg_key:
+        url: 'https://nvidia.github.io/libnvidia-container/gpgkey'
+        output_path: "/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg"
+      when:
+        - ansible_distribution == 'Ubuntu' or
+          ansible_distribution == 'Debian'
+
     - name: Add docker, and kubernetes gpgs
       apt_key:
         url: "{{ item }}"
@@ -64,7 +72,6 @@
         - https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
         - https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg
         - https://mirrors.huaweicloud.com/docker-ce/linux/debian/gpg
-        - https://nvidia.github.io/libnvidia-container/gpgkey
       when:
         - ansible_distribution == 'Ubuntu' or
           ansible_distribution == 'Debian'
@@ -84,7 +91,7 @@
       when:
         - inventory_hostname in groups['gpu']
 
-    - name: Install nginx on GPU group hosts
+    - name: Install GPU Driver on GPU Group Hosts
       package:
         name: "{{ item.name }}"
         state: present
@@ -149,6 +156,14 @@
     - {runtime: "{{ containerd_package_openEuler }}", nodegroups: "containerd-node", mastergroups: "containerd-master", os: "openEuler", use: "dnf"}
     - {runtime: "{{ docker_package_openEuler }}", nodegroups: "docker-node", mastergroups: "docker-master", os: "Kylin Linux Advanced Server", use: "dnf"}
     - {runtime: "{{ containerd_package_openEuler }}", nodegroups: "containerd-node", mastergroups: "containerd-master", os: "Kylin Linux Advanced Server", use: "dnf"}
+
+- name: Install nvidia-container-toolkit
+  apt:
+    name: nvidia-container-toolkit
+    state: present
+  when:
+    - (inventory_hostname in groups['containerd-master'] and inventory_hostname in groups['gpu']) or
+      (inventory_hostname in groups['containerd-node'] and inventory_hostname in groups['gpu'])
 
 - name: Ensure /etc/docker directories exists
   file:

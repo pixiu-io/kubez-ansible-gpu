@@ -4,7 +4,7 @@
 #
 # This script is intended to be used for install kubernetes env.
 
-REPO=gopixiu-io
+REPO=pixiu-io
 # 选择需要安装的分支，默认 master 分支
 BRANCH=master
 

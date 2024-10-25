@@ -8,7 +8,7 @@ REPO=gopixiu-io
 # 选择需要安装的分支，默认 master 分支
 BRANCH=master
 
-TARGET=kubez-ansible-${BRANCH//\//-}
+TARGET=kubez-ansible-gpu-${BRANCH//\//-}
 
 function _is_distro {
     if [[ -z "$DISTRO" ]]; then

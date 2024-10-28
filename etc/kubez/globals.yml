@@ -227,7 +227,7 @@ s3:
   s3ForcePathStyle: true
   insecure: true
 
-# helm 仓库配置项
+#helm 仓库配置项
 #loki_repo_name: "{{ default_repo_name }}"
 #loki_repo_url: "{{ default_repo_url }}"
 #loki_path: pixiuio/loki

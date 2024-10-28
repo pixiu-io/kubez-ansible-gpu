@@ -581,7 +581,7 @@ cilium_namespace: kube-system
 ################
 # Nvidia Options
 ################
-enable_nvidia_operator: "no"
+enable_nvidia_operator: "yes"
 nvidia_operator_namespace: "nvidia-operator"
 nvidia_operator_repository_name: "{{ default_repo_name }}"
 nvidia_operator_repository_url: "{{ default_repo_url }}"
@@ -591,7 +591,7 @@ nvidia_operator_version: "v24.6.2"
 #########################
 # nvidia_device_plugin Options
 #########################
-enable_nvidia_device_plugin: "no"
+enable_nvidia_device_plugin: "yes"
 
 ##########################
 # Helm Chart Applications

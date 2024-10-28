@@ -227,7 +227,7 @@ s3:
   s3ForcePathStyle: true
   insecure: true
 
-# helm 仓库配置项
+#helm 仓库配置项
 #loki_repo_name: "{{ default_repo_name }}"
 #loki_repo_url: "{{ default_repo_url }}"
 #loki_path: pixiuio/loki
@@ -499,7 +499,7 @@ s3:
 ################
 # Nvidia Options
 ################
-#enable_nvidia_operator: "no"
+#enable_nvidia_operator: "yes"
 #nvidia_operator_namespace: "nvidia-operator"
 #nvidia_operator_repository_name: "{{ default_repo_name }}"
 #nvidia_operator_repository_url: "{{ default_repo_url }}"
@@ -509,4 +509,4 @@ s3:
 #########################
 # nvidia_device_plugin Options
 #########################
-#enable_nvidia_device_plugin: "no"
+#enable_nvidia_device_plugin: "yes"

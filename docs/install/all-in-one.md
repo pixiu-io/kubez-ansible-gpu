@@ -29,15 +29,18 @@
 
 - 移除 `containerd-master` 和 `containerd-node` 的主机信息, 并添加在 `docker` 分组中, 调整后效果如下:
   ```shell
-  [docker-master]
-  localhost       ansible_connection=local
-
-  [docker-node]
-  localhost       ansible_connection=local
-
-  [containerd-master]
-
-  [containerd-node]
+    [docker-master]
+    
+    [docker-node]
+    
+    [containerd-master]
+    localhost       ansible_connection=local
+    
+    [containerd-node]
+    localhost       ansible_connection=local
+    
+    [gpu]
+    localhost       ansible_connection=local
   ```
 
 4. (可选)修改 kubernetes 镜像仓库

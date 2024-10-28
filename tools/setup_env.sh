@@ -210,7 +210,7 @@ function install_ansible {
 }
 
 function download_kubez_ansible {
-    curl https://codeload.github.com/${REPO}/kubez-ansible/zip/refs/heads/${BRANCH} -o ${TARGET}.zip
+    curl https://codeload.github.com/${REPO}/kubez-ansible-gpu/zip/refs/heads/${BRANCH} -o ${TARGET}.zip
     if [ $? -ne 0 ]; then
         exit 1
     fi

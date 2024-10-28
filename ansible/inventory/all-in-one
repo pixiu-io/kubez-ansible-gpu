@@ -8,6 +8,9 @@ localhost       ansible_connection=local
 [containerd-node]
 localhost       ansible_connection=local
 
+[gpu]
+localhost       ansible_connection=local
+
 [kube-master:children]
 docker-master
 containerd-master
@@ -18,8 +21,6 @@ containerd-node
 
 [storage]
 localhost       ansible_connection=local
-
-[gpu]
 
 [baremetal:children]
 kube-master

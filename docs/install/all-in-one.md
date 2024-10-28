@@ -30,15 +30,15 @@
 - 移除 `containerd-master` 和 `containerd-node` 的主机信息, 并添加在 `docker` 分组中, 调整后效果如下:
   ```shell
   [docker-master]
-    
+  
   [docker-node]
-    
+  
   [containerd-master]
   localhost       ansible_connection=local
-    
+  
   [containerd-node]
   localhost       ansible_connection=local
-    
+  
   [gpu]
   localhost       ansible_connection=local
   ```

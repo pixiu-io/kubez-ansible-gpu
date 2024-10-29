@@ -162,8 +162,7 @@
     name: nvidia-container-toolkit
     state: present
   when:
-    - inventory_hostname in groups['gpu'] or
-      inventory_hostname in groups['gpu']
+    - inventory_hostname in groups['gpu']
 
 - name: Ensure /etc/docker directories exists
   file:

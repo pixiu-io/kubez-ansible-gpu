@@ -1,3 +1,26 @@
+{% if inventory_hostname in groups['gpu'] %}
+{
+    "exec-opts": [
+        "native.cgroupdriver=systemd"
+    ],
+    "insecure-registries": [
+        "0.0.0.0/0"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "100m"
+    },
+    "registry-mirrors": [
+        "https://hdi5v8p1.mirror.aliyuncs.com"
+    ],
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}
+{% else %}
 {
   "registry-mirrors": ["https://hdi5v8p1.mirror.aliyuncs.com"],
   "insecure-registries": ["0.0.0.0/0"],
@@ -10,3 +33,4 @@
     "max-size": "100m"
   }
 }
+{% endif %}

@@ -585,8 +585,10 @@ enable_nvidia_operator: "yes"
 nvidia_operator_namespace: "nvidia-operator"
 nvidia_operator_repository_name: "{{ default_repo_name }}"
 nvidia_operator_repository_url: "{{ default_repo_url }}"
-nvidia_operator_repository_path: "pixiuio/gpu-operator"
+nvidia_operator_repository_path: "{{ default_repo_name }}/gpu-operator"
 nvidia_operator_version: "v24.6.2"
+nvidia_node_feature_discovery_image: "{{ app_image_repository }}/node-feature-discovery"
+
 
 #########################
 # nvidia_device_plugin Options
@@ -1032,6 +1034,7 @@ charts:
     chart:
       path: "{{ nvidia_operator_repository_path }}"
       version: "{{ nvidia_operator_version }}"
-    chart_extra_vars: {}
+    chart_extra_vars:
+      node-feature-discovery.image.repository: "{{ nvidia_node_feature_discovery_image }}"
     chart_extra_flags:
       - create-namespace
